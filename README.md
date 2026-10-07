@@ -18,47 +18,72 @@ python3 -m http.server 8000   # then visit http://localhost:8000
 ```
 index.html        # the whole site (HTML + inline CSS + a small vanilla-JS block)
 images/           # photos
-  dining-area.jpg        # used in the hero
-  kitchen-cooktop.jpg    # available (not placed by default)
-  bedroom.jpg            # available
-  bedroom-city-view.jpg  # available
-  bathroom.jpg           # available
+  dining-area.jpg        # hero + gallery
+  living-room.jpg        # gallery
+  kitchen-cooktop.jpg    # gallery
+  bedroom.jpg            # gallery
+  bedroom-city-view.jpg  # gallery
+  bedroom-two.jpg        # gallery
+  bathroom.jpg           # gallery
 ```
 
 ## Sections
 
 Sticky nav · Hero · About / our team · How we work (4 steps) · Services
-(2×2) · Service areas (map) · FAQ · Get-a-quote form · Footer.
+(2×2) · **Our work** (portfolio gallery) · Service areas (map) · FAQ ·
+Get-a-quote form · Footer.
 
 ## Design
 
 - **Fonts:** Archivo (headings, heavy/uppercase) + Inter (body), via Google Fonts.
 - **Colours:** emerald green `#15B36A`, forest-green bands `#0B3A2A`, mint
   section backgrounds `#E9F6EF`. All defined as CSS variables on `:root`.
-- Hover animations on buttons, step cards, service cards, suburb pills; the
-  FAQ accordion and quote-form confirmation are vanilla JS.
+- Hover animations on buttons, step/service/gallery cards and suburb pills; the
+  FAQ accordion, quote-form confirmation and photo lightbox are vanilla JS.
 
 As requested, trust badges and stats (Fully Insured / Police Checked /
 Satisfaction Guarantee, the "8+ years" badge and the "4.9★" rating card) from
 the reference mock are intentionally **omitted**.
 
+## WhatsApp contact
+
+The site prompts visitors to request information on WhatsApp for an instant
+reply, via: a nav button, a hero button, a callout + contact line in the quote
+section, a footer link, and an **always-visible floating button** (bottom
+right). Every WhatsApp link opens `wa.me/94769970226` with a pre-filled
+message.
+
+> **The WhatsApp number is a placeholder.** `+94 76 997 0226`
+> (`wa.me/94769970226`) is a dummy. To change it, search `index.html` for
+> `94769970226` (the `wa.me` links) and `+94 76 997 0226` (the displayed
+> number) and replace both with the real international number (country code,
+> no `+`, no leading `0`).
+
+## Scroll animations
+
+Sections and cards fade/slide in as they enter the viewport
+(`IntersectionObserver`), the hero headline's underline draws in, the hero
+photo gently floats, and the map marker pulses. All of this respects
+`prefers-reduced-motion` (motion is disabled for visitors who ask for reduced
+motion) and degrades gracefully without JavaScript.
+
 ## Photos
 
-The hero uses `dining-area.jpg`. The **About** section currently shows a
-placeholder (`[Add your crew photo]`) because it calls for a photo of the team
-— drop a crew photo into `images/` and swap the placeholder `<div class="about-ph">`
-for an `<img>`. The other four photos in `images/` aren't placed by default
-(this template only has hero + team photo slots); if you'd like an "Our Work"
-gallery to showcase all five, it can be added in the same style.
+The hero and the **Our work** gallery (7 photos) use the images in `images/`.
+Tap any gallery photo (or the hero photo) to open it in a lightbox. The
+**About** section still shows a placeholder (`[Add your crew photo]`) because
+it calls for a photo of the team — drop a crew photo into `images/` and swap
+the placeholder `<div class="about-ph">` for an `<img>`.
 
 ## Placeholders to replace with real details
 
-- Phone `(03) 9000 1234`, email `hello@sparkleclean.com.au`, `Melbourne, VIC`
-- Opening hours (nav/footer/quote section)
+- **WhatsApp number** `94769970226` / `+94 76 997 0226` (dummy — see above)
+- Email `hello@sparkleclean.com.au`, `Melbourne, VIC`
+- Opening hours (footer/quote section)
 - `ABN [00 000 000 000]` (footer)
 - Service-areas map is a stylised SVG placeholder — swap for a real Google
   Maps embed if you want an interactive map.
-- Social links (`#`) in the footer.
+- Facebook / Instagram links (`#`) in the footer.
 
 ## Wiring up the quote form
 
